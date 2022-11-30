@@ -65,35 +65,35 @@ export class AppComponent {
   images: Image[] = [{
     name: 'pattern-1',
     display: '',
-    url: '/assets/pattern-1.jpg'
+    url: 'assets/pattern-1.jpg'
   }, {
     name: 'pattern-2',
     display: '',
-    url: '/assets/pattern-2.jpg'
+    url: 'assets/pattern-2.jpg'
   }, {
     name: 'pattern-3',
     display: '',
-    url: '/assets/pattern-3.jpg'
+    url: 'assets/pattern-3.jpg'
   }, {
     name: 'pattern-4',
     display: '',
-    url: '/assets/pattern-4.jpg'
+    url: 'assets/pattern-4.jpg'
   }, {
     name: 'pattern-5',
     display: '',
-    url: '/assets/pattern-5.jpg'
+    url: 'assets/pattern-5.jpg'
   }, {
     name: 'pattern-6',
     display: '',
-    url: '/assets/pattern-6.jpg'
+    url: 'assets/pattern-6.jpg'
   }, {
     name: 'pattern-7',
     display: '',
-    url: '/assets/pattern-7.jpg'
+    url: 'assets/pattern-7.jpg'
   }, {
     name: 'pattern-8',
     display: '',
-    url: '/assets/pattern-8.jpg'
+    url: 'assets/pattern-8.jpg'
   }];
 
   levels: Level[] = [{
