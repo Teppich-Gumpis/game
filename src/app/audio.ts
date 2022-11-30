@@ -4,9 +4,9 @@ export interface Audio {
 }
 
 const audioUrls = {
-  short: '/assets/short.aac',
-  long: '/assets/long.aac',
-  background: '/assets/background.aac'
+  short: 'assets/short.aac',
+  long: 'assets/long.aac',
+  background: 'assets/background.aac'
 };
 
 const audioCtx = new AudioContext();
