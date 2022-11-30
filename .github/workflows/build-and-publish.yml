@@ -1,0 +1,50 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Teppich Gumpis Build and Publish
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js v18.10
+      uses: actions/setup-node@v3
+      with:
+        node-version: v18.10
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
+    - uses: actions/upload-artifact@master
+      with:
+        name: dist
+        path: dist/teppich-gumpis
+    
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist/teppich-gumpis
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+        with:
+          token: ${{ secrets.github_token }}
+          folder: dist/teppich-gumpis
