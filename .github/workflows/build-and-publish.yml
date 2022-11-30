@@ -19,32 +19,28 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - uses: actions/upload-artifact@master
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
       with:
-        name: dist
         path: dist/teppich-gumpis
-    
+
+
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    
     steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: dist
-          path: dist/teppich-gumpis
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
-          folder: dist/teppich-gumpis
+  
