@@ -46,5 +46,5 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
         with:
-          token: ${{ secrets.github_token }}
+          token: ${{ secrets.DEPLOY_TOKEN }}
           folder: dist/teppich-gumpis
